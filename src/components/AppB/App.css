@@ -1,0 +1,105 @@
+/* StepForm.css */
+/* .step-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
+
+.step {
+  width: 600px;;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #00000087
+}
+.step-form input{
+  background-color: unset;
+  border-color: green;
+  border-radius: 20px;
+}
+.step-form .css-13cymwt-control {
+  background-color: unset;
+  border-color: green;
+  border-radius: 20px 0px 0px 20px;
+  height: 30px!important;
+  color: grey!important;
+  min-height: 47px!important;
+}
+.css-qbdosj-Input {
+  color: grey!important;
+}
+.css-1dimb5e-singleValue {
+  color: grey!important;
+}
+.step-form button {
+  background-color: #4CAF50!important;
+  border-radius: 20px!important;
+}
+.nmbr{
+  border-radius: 0px 20px 20px 0px!important;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: grey;
+}
+.css-1xc3v61-indicatorContainer {
+  color: grey!important;  
+}
+.css-1u9des2-indicatorSeparator {
+  background-color: grey!important;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.col-8.pl-0{
+  position: relative;
+}
+.icon-inp{
+    position: absolute;
+    top: 8px;
+    right: 30px;
+    /* background-color: red; */
+    color: #fff;
+}
+.step h2 {
+  font-size: 19px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+}
+.main-bdy{
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/images/bg.jfif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+@media screen and (max-width: 650px) and (min-width:320px){
+  .step-form {
+    width: 100%;
+  }
+}

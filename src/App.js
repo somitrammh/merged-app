@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom';
+import AppA from './components/AppA/AppA';
+import AppB from './components/AppB/AppB';
+// import StepForm from './components/AppB/StepForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Routes>
+          {/* Define route for AppA */}
+          <Route exact path="/" element={<Navigate to="/survey-form" />} />
+            <Route exact path="/survey-form" element={<AppA />} />
+
+            <Route exact path="/response/:slug" element={<AppB />} />
+         
+        </Routes>
+    </Router>
   );
 }
 

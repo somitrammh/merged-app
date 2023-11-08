@@ -1,0 +1,448 @@
+/* Loader.css */
+.loader-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .loader-heading {
+    font-size: 24px;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .progressbar-container {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .loader-hdng{
+     font-size: 25px;
+     margin-top: 50px;
+     font-weight: bold;
+     color: #3BAD4B;
+}
+.loader-parent{
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/public/images/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.CircularProgressbar .CircularProgressbar-text {
+    fill: #000000;
+    font-size: 20px;
+    dominant-baseline: middle;
+    text-anchor: middle;
+    font-weight: 700;
+}
+.CircularProgressbar .CircularProgressbar-path {
+    stroke: #3BAD4B;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-page-con{
+  background-color: #000;
+}
+.heading{
+  color: #fff;
+  width: 100%;
+}
+
+.heading h2{
+  font-size: 20px;
+  text-align: center;
+}
+.heading h3{
+  font-size: 20px;
+}
+.price-main p{
+ color: #fff;
+}
+
+.main-page-con .expire {
+  display: none;
+}
+
+.main-page-con .carousel-indicators [data-bs-target] {
+  width: 13px;
+  height: 3px;
+}
+
+.main-page-con .carousel-indicators {
+  bottom: 11px;
+}
+
+.main-page-con .carousel-control-next-icon,
+.main-page-con .carousel-control-prev-icon {
+  width: 1rem;
+  height: 2rem;
+}
+
+.main-page-con .plan_detail .price .btn_pay {
+  background-color: #14f7c1;
+  color: var(--blue-color);
+  position: unset;
+  width: 100%;
+}
+
+.main-page-con .price-main {
+  font-size: 14px;
+  margin: 16px;
+  margin-top: 0px;
+  border: 1px solid #14f7c1;
+  padding-top: 12px;
+  border-radius: 5px;
+}
+
+.main-page-con .price-main-g {
+  border: 1px solid #dec06d;
+}
+
+.main-page-con .plan_detail .price .btn_pay {
+  background-color: #14f7c1;
+  color: var(--blue-color);
+  position: unset;
+  width: 100%;
+  font-weight: 900;
+}
+
+.main-page-con sup {
+  top: 0px;
+}
+
+.main-page-con .plan_detail .plan_img {
+  border-radius: 0px;
+}
+
+.main-page-con .advantages-bx {
+  border-radius: 6px;
+  padding: 8px 7px;
+  min-height: 143px;
+  margin-bottom: 20px;
+  background: #4a4a4a;
+}
+
+.main-page-con .advantages h6 {
+  font-size: 12px;
+  margin-top: 8px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.main-page-con .advantages img {
+  width: 55px;
+  height: 55px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  margin-top: 14px;
+}
+
+.main-page-con .bg-secondary {
+  background-color: #4a4a4a !important;
+}
+
+.main-page-con .accordion-item {
+  background-color: unset;
+  border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.main-page-con .accordion-button {
+  font-size: 12px;
+}
+
+.main-page-con .accordion-header {
+  margin-bottom: 0px;
+}
+
+.main-page-con .accordion-body {
+  padding: 1rem 1.25rem;
+  background: #3bad4b;
+  color: #fff;
+  margin-bottom: 7px;
+}
+
+.main-page-con .accordion-flush .accordion-item .accordion-button {
+  border-radius: 6px;
+}
+
+.main-page-con .testimonial-main {
+  background: #4a4a4a;
+  padding: 13px 42px;
+  width: 90%;
+  margin: auto;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.main-page-con .testimonial-main p {
+  font-size: 12px;
+  line-height: 21px;
+}
+
+.main-page-con .carousel-control-next {
+  right: 9px;
+}
+
+.main-page-con .carousel-control-prev {
+  left: 16px;
+}
+
+.main-page-con .accolades .row .col-9 p b {
+  font-size: 12px;
+  color: #000;
+}
+
+.main-page-con .accolades .row .col-9 p {
+  font-size: 12px;
+  color: #000 !important;
+  line-height: 1.2;
+  margin-bottom: 0px;
+}
+
+.main-page-con .carousel-indicators [data-bs-target] {
+  background-color: #14f7c1;
+}
+
+.main-page-con .plan_detail .btn-request {
+  background-color: #14f7c1;
+  color: #060606;
+}
+
+.main-page-con .plan_detail .price sup {
+  background-color: #14f7c1;
+  color: var(--blue-color);
+  margin-left: 0px;
+  padding: 0 4px;
+  font-size: 12px;
+}
+
+.main-page-con a {
+  text-transform: lowercase;
+}
+
+
+
+
+.main-page-con .gallery-container h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: bold;
+}
+
+.main-page-con .gallery-container p.page-description {
+  text-align: center;
+  margin: 25px auto;
+  font-size: 18px;
+  color: #999;
+}
+
+.main-page-con .tz-gallery {
+  padding: 10px;
+}
+
+.main-page-con .tz-gallery img {
+  height: 100%
+}
+
+.main-page-con .tz-gallery .row>div {
+  padding: 2px;
+}
+
+.main-page-con .tz-gallery .lightbox img {
+  width: 100%;
+  border-radius: 0;
+  position: relative;
+}
+
+
+.main-page-con .tz-gallery .lightbox:hover:after,
+.main-page-con .tz-gallery .lightbox:hover:before {
+  opacity: 1;
+}
+
+.main-page-con .baguetteBox-button {
+  background-color: transparent !important;
+}
+
+.main-page-con .timer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+  height: 48px;
+  width: 100%;
+  position: relative;
+  z-index: 999999;
+}
+
+.main-page-con .timer-to-inner {
+  background-color: #14f7c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+  height: 48px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.main-page-con .timer-top p {
+  margin-bottom: 0px !important;
+  color: #000f !important;
+  font-size: 20px;
+  padding: 1px 0px 5px 4px;
+  border-radius: 5px;
+  font-size: 33px;
+}
+
+.main-page-con .back-errow {
+  font-size: 43px;
+  line-height: 0;
+  margin-top: -10px;
+  cursor: pointer;
+}
+
+.main-page-con .modal-footer {
+  font-size: 14px;
+  color: red;
+  cursor: pointer;
+  text-align: center !important;
+  justify-content: center !important;
+  text-transform: capitalize;
+  padding-top: 8px !important;
+  border-top: 1px solid #000000;
+
+}
+
+
+.main-page-con .modal-content {
+  width: 90%;
+  margin: auto;
+  background-color: #14f7c1;
+}
+
+.main-page-con .fade:not(.show) {
+  opacity: 0.9 !important;
+}
+
+
+button.accordion-button.collapsed {
+  background: #3b3b3b;
+  width: 100%!important;
+  text-align: left;
+  margin: auto;
+}
+
+button.accordion-button{
+  background: #3b3b3b;
+  width: 100%;
+  text-align: left;
+  margin: auto;
+}
+.step-form button {
+  background-color:  #4a4a4a!important;
+  border-radius: 0px!important;
+}
+
+.main-slider .carousel-indicators button {
+  background-color: #14f7c1!important;
+  padding: 0px;
+  margin-left: 5px;
+}
+button.btn.btn-sm.btn_pay.w-100 {
+  background-color: #14f7c1!important;
+  font-weight: bold;
+}
+.price.showprice{
+  color: #14f7c1;
+}
+.price.expire{
+  color: #14f7c1;
+}
+span.visually-hidden {
+  display: none;
+}
+p.text-sm.text-center {
+  color: #fff;
+  font-size: 12px;
+  padding: 10px;
+}
+a{
+   color: #14f7c1!important;
+}
+.col-12.text-center.mb-1, .col-12.text-center.mb-2.text-white,.col-12.text-center.text-white {
+  font-size: 11px;
+}
+.main-section{
+  background-color: #000;
+}
+.pay-button{
+  width: 100%;
+  padding: 10px;
+  background-color: #14f7c1;
+  position: fixed;
+  bottom: 0px;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+}
+.close-mdl {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px 9px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.glry-img{
+  display: flex;
+}
+.price.showprice.d-flex {
+  align-items: center;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.prsnt{
+  background-color: #14f7c1;
+  color: #000;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 0px 3px;
+  margin: 0px 8px;
+}
