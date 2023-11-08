@@ -47,12 +47,11 @@ const StepForm = () => {
             "error-callback": (error) => {
               // Handle the error here
               console.error("Error initializing reCAPTCHA verifier:", error);
+              return;
             },
           }
         );
 
-        console.log("recaptcha resolved")
-        console.log("mobile number",`${isd}${userData.mobile}`)
         var mobileNumber = `${isd}${userData.mobile}`;
         firebase
           .auth()
