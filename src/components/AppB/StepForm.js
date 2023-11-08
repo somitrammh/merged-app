@@ -36,7 +36,7 @@ const StepForm = () => {
       try {
         setIsLoading(true)
         // Initialize reCAPTCHA verifier
-        const verifier = await new firebase.auth.RecaptchaVerifier(
+        const verifier = new firebase.auth.RecaptchaVerifier(
           "recaptcha-container",
           {
             size: "invisible",
