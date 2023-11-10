@@ -6,6 +6,7 @@ import "./App.css";
 const StepForm = ({steps,targetUrl,formId}) => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
+  const [activeStepFirst, setActiveStepFirst] = useState(true);
   const [formData, setFormData] = useState({});
   const [formDataPart, setFormDataPart] = useState({SiteDetails:{}});
   const [errors, setErrors] = useState({});
@@ -295,13 +296,26 @@ const StepForm = ({steps,targetUrl,formId}) => {
     });
   };
 
+ 
+  const startActivePage = () =>{
+    setActiveStepFirst(false);
+  }
+
   const totalSteps = steps.length;
   const progress = (activeStep / (totalSteps - 1)) * 100;
 
   return (
     <div className="container-fluid qwert">
       <div className="row w-100">
-        <div className="col-md-6 m-auto">
+        {
+          activeStepFirst ? (<div className="col-md-6 m-auto">
+            <div className="card p-2">
+              <div className="card-body text-center">
+                <h5 className="card-title mb-3" style={{color:"white"}}><strong>Ai</strong> based Floorplanning</h5>
+                <h6 style={{color:"white"}}>Unlock your floor plan in just 30 secs</h6>
+                <button type="button" className="btn btn-primary mt-5 mb-5" style={{width:"auto"}} onClick={startActivePage}>Lets Begin !!!</button>
+              </div>
+            </div> </div>) : ( <div className="col-md-6 m-auto">
           <ProgressBar now={progress}  className="mb-3" />
           <div className="card p-2">
             <div className="card-body">
@@ -355,34 +369,43 @@ const StepForm = ({steps,targetUrl,formId}) => {
 
                       {isRadioError && (<div style={{color:"red"}}>(This field is required)</div>)}
 
-                  <div className="text-right mt-3">
+                  <div className="mt-3 row" style={{border:"unset",background:"unset"}}>
+                  <div className="col-md-6  text-left">
                     {activeStep !== 0 ? (
-                      <Button
-                        variant="secondary"
-                        onClick={handleBack}
-                        disabled={activeStep === 0}
-                      >
-                        Back
-                      </Button>
+                      
+                        <Button
+                          variant="secondary"
+                          onClick={handleBack}
+                          disabled={activeStep === 0}
+                        >
+                          Back
+                        </Button>
+                      
                     ) : (
                       ""
-                    )}{" "}
-                    <Button className="ml-2"
-                      variant="primary"
-                      onClick={
-                        activeStep === steps.length - 2
-                          ? handleFinish
-                          : handleNext
-                      }
-                    >
-                      {activeStep === steps.length - 2 ? "Finish" : "Next"}
-                    </Button>
+                    )}
+                    </div>
+                    {" "}
+                    <div className="col-md-6  text-right">
+                      <Button className="ml-2"
+                        variant="primary"
+                        onClick={
+                          activeStep === steps.length - 2
+                            ? handleFinish
+                            : handleNext
+                        }
+                      >
+                        {activeStep === steps.length - 2 ? "Finish" : "Next"}
+                      </Button>
+                    </div>
                   </div>
                 </>
               )}
             </div>
           </div>
-        </div>
+        </div>)
+        }
+       
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ function App() {
     <Router>
         <Routes>
           {/* Define route for AppA */}
-          <Route exact path="/" element={<Navigate to="/survey-form" />} />
+          <Route exact path="/" element={<AppA />} />
             <Route exact path="/survey-form" element={<AppA />} />
 
             <Route exact path="/response/:slug" element={<AppB />} />
