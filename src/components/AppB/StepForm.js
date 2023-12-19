@@ -10,6 +10,7 @@ import "./Loader.css";
 
 const StepForm = () => {
   const [step, setStep] = useState(0);
+  const [formResponseId, setFormResponseId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({
     username: "",
@@ -77,11 +78,63 @@ const StepForm = () => {
       setIsLoading(true)
       confirmationResult
         .confirm(otp)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           const user = userCredential.user;
           console.log("Authenticated user:", user);
           setIsLoading(false)
           setStep(step + 1);
+
+          // API Call for update ResponseForm 
+
+            const apiUrl = `https://forms-api.makemyhouse.com/updateResponse/${formResponseId}`; // Replace with your API endpoint
+
+            try {
+              const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ mobileNumber: userData.mobile }), // Pass mobileNumber in the body
+              });
+
+              const data = await response.json();
+              console.log('API Response:', data);
+
+              // Handle success 
+              if (data.flag) {
+                // API call was successful
+                console.log('Document updated successfully');
+                // Perform actions based on success
+              } else {
+                // API call failed
+                console.log('Error updating document:', data.message);
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              // Handle network errors or exceptions
+            }
+
+
+          // API For CRM Entry 
+          const apiUrl2 = `https://api.makemyhouse.com/public/crm/lead`; // Replace with your API endpoint
+          var name = userData.username ? userData.username : userData.mobile;
+
+          try {
+            const response = await fetch(apiUrl2, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ publicid:"e8ca07fae10a3dbadbc166c4c9dfddda","name":name,"firstname": name,"label:isdcode": "91",phone:userData.mobile,leadsource:"home planner","leadstatus":"Hot","label:Type_Status":"not contacted"}), // Pass mobileNumber in the body
+            });
+
+            const data = await response.json();
+            console.log('CRM API Response:', data);
+
+          } catch (error) {
+            console.error('Error:', error);
+            // Handle network errors or exceptions
+          }
         })
         .catch((error) => {
           alert(error.message);
@@ -90,11 +143,13 @@ const StepForm = () => {
       console.error("Error initializing reCAPTCHA:", error);
     }
   };
+
   useEffect(() => {
     const formId = urlParams.get("Fx");
     const responseId = urlParams.get("Rx");
     // console.log("slug details",formId)
     if (responseId) {
+      setFormResponseId(responseId);
       // console.log("response_id after check",responseId)
       try {
             fetch(`https://forms-api.makemyhouse.com/response/${responseId}`)
@@ -148,7 +203,7 @@ const StepForm = () => {
             isLoading={isLoading}
           />
         )}
-        {step === 3 && <StepThree slug={slug} isd={isd} mobile={userData.mobile} />}
+        {step === 3 && <StepThree slug={slug} isd={isd} mobile={userData.mobile} responseId={formResponseId} />}
       </div>
     </div>
   );

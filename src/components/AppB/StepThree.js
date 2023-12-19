@@ -22,7 +22,7 @@ const StepThree = ({ isd,mobile,slug }) => {
       .then((response) => response.json())
       .then((resultData) => {
         console.log("data from api call", resultData);
-        const url = `https://www.makemyhouse.com/payment?currency=${resultData.currency}&amount=${resultData.after_offer_amount}&mobile=${formattedIsd}${mobile}`
+        const url = `https://www.makemyhouse.com/payment?currency=${resultData.currency}&amount=${resultData.after_offer_amount}&mobile=${formattedIsd}${mobile}&responseId=${responseId}`
         setPayURL(url)
         setData(resultData);
       })
