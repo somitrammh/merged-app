@@ -95,7 +95,7 @@ const StepForm = () => {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ publicid:"e8ca07fae10a3dbadbc166c4c9dfddda","name":name,"firstname": name,"label:isdcode": "91",phone:userData.mobile,leadsource:"home planner","leadstatus":"Hot","label:Type_Status":"not contacted"}), // Pass mobileNumber in the body
+              body: JSON.stringify({ publicid:"e8ca07fae10a3dbadbc166c4c9dfddda","name":name,"firstname": name,"label:isdcode": "91",phone:userData.mobile,leadsource:"Floor Planner","leadstatus":"Hot","label:Type_Status":"not contacted"}), // Pass mobileNumber in the body
             });
 
             const data = await response.json();
