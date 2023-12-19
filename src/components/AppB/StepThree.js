@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import Accordion from "react-bootstrap/Accordion";
 import Modal from "react-bootstrap/Modal";
-const StepThree = ({ isd,mobile,slug }) => {
+const StepThree = ({ isd,mobile,slug ,responseId}) => {
     const formattedIsd = isd.replace('+', '');
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
