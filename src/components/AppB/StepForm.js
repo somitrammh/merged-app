@@ -84,6 +84,28 @@ const StepForm = () => {
           setIsLoading(false)
           setStep(step + 1);
 
+
+          // API For CRM Entry 
+          const apiUrl2 = `https://api.makemyhouse.com/public/crm/lead`; // Replace with your API endpoint
+          var name = userData.username ? userData.username : userData.mobile;
+
+          try {
+            const response = await fetch(apiUrl2, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ publicid:"e8ca07fae10a3dbadbc166c4c9dfddda","name":name,"firstname": name,"label:isdcode": "91",phone:userData.mobile,leadsource:"home planner","leadstatus":"Hot","label:Type_Status":"not contacted"}), // Pass mobileNumber in the body
+            });
+
+            const data = await response.json();
+            console.log('CRM API Response:', data);
+
+          } catch (error) {
+            console.error('Error:', error);
+            // Handle network errors or exceptions
+          }
+
           // API Call for update ResponseForm 
 
             const apiUrl = `https://forms-api.makemyhouse.com/updateResponse/${formResponseId}`; // Replace with your API endpoint
@@ -115,26 +137,7 @@ const StepForm = () => {
             }
 
 
-          // API For CRM Entry 
-          const apiUrl2 = `https://api.makemyhouse.com/public/crm/lead`; // Replace with your API endpoint
-          var name = userData.username ? userData.username : userData.mobile;
-
-          try {
-            const response = await fetch(apiUrl2, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ publicid:"e8ca07fae10a3dbadbc166c4c9dfddda","name":name,"firstname": name,"label:isdcode": "91",phone:userData.mobile,leadsource:"home planner","leadstatus":"Hot","label:Type_Status":"not contacted"}), // Pass mobileNumber in the body
-            });
-
-            const data = await response.json();
-            console.log('CRM API Response:', data);
-
-          } catch (error) {
-            console.error('Error:', error);
-            // Handle network errors or exceptions
-          }
+          
         })
         .catch((error) => {
           alert(error.message);
