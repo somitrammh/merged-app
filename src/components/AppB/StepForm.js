@@ -9,6 +9,7 @@ import Loader from "./Loader";
 import "./Loader.css";
 
 const StepForm = () => {
+  const [formattedData, setFormattedData] = useState('');
   const [step, setStep] = useState(0);
   const [formResponseId, setFormResponseId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -74,6 +75,7 @@ const StepForm = () => {
   };
 
   const handleVerifyOtp = async () => {
+    
     try {
       setIsLoading(true)
       confirmationResult
@@ -86,7 +88,7 @@ const StepForm = () => {
 
 
           // API For CRM Entry 
-          const apiUrl2 = `https://api.makemyhouse.com/public/crm/lead`; // Replace with your API endpoint
+          const apiUrl2 = `https://api.makemyhouse.com/public/crm/lead`; 
           var name = userData.username ? userData.username : userData.mobile;
 
           try {
@@ -95,7 +97,7 @@ const StepForm = () => {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ publicid:"e8ca07fae10a3dbadbc166c4c9dfddda","name":name,"firstname": name,"label:isdcode": "91",phone:userData.mobile,leadsource:"Floor Planner","leadstatus":"Hot","label:Type_Status":"not contacted"}), // Pass mobileNumber in the body
+              body: JSON.stringify({ publicid:"e8ca07fae10a3dbadbc166c4c9dfddda","name":name,"firstname": name,"label:isdcode": "91",phone:userData.mobile,leadsource:"Floor Planner","leadstatus":"Hot","label:Type_Status":"not contacted","label:Requirement":formattedData}), // Pass mobileNumber in the body
             });
 
             const data = await response.json();
@@ -108,7 +110,7 @@ const StepForm = () => {
 
           // API Call for update ResponseForm 
 
-            const apiUrl = `https://forms-api.makemyhouse.com/updateResponse/${formResponseId}`; // Replace with your API endpoint
+            const apiUrl = `https://forms-api.makemyhouse.com/updateResponse/${formResponseId}`; 
 
             try {
               const response = await fetch(apiUrl, {
@@ -147,43 +149,81 @@ const StepForm = () => {
     }
   };
 
-  useEffect(() => {
-    const formId = urlParams.get("Fx");
-    const responseId = urlParams.get("Rx");
-    // console.log("slug details",formId)
-    if (responseId) {
-      setFormResponseId(responseId);
-      // console.log("response_id after check",responseId)
-      try {
-            fetch(`https://forms-api.makemyhouse.com/response/${responseId}`)
-              .then((response) => {
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                return response.json();
-              })
-              .then((data) => {
-                const dataObject = data.answer[0];
-                let formattedData = "";
+   useEffect(() => {
+    
 
-                for (const key in dataObject) {
-                  if (dataObject.hasOwnProperty(key)) {
-                    const formattedKey = key.replace(/\s+/g, " ").trim();
-                    const formattedValue = JSON.stringify(dataObject[key]);
-                    formattedData += `question:${formattedKey}\n Answer:${formattedValue}\n`;
-                  }
-                }
+    const fetchResponseData = async () => {
+      const formId = urlParams.get("Fx");
+      const responseId = urlParams.get("Rx");
+      if (responseId) {
+        setFormResponseId(responseId);
+          try {
+            const response = await fetch(`https://forms-api.makemyhouse.com/response?q=${responseId}`); 
+            if (!response.ok) {
+              throw new Error('Network response was not ok.');
+            }
+            const data = await response.json();
+            console.log("response form data :",data.data)
+            setFormattedData(data.data);
 
-                // console.log("form data:",formattedData);
-              })
-              .catch((error) => {
-                console.log("Fetch error:", error);
-              });
           } catch (error) {
-            console.log("Error initializing reCAPTCHA:",error);
+            console.error('Fetch error:', error);
+            
           }
-    }
-  },[]);
+        }
+    };
+
+    fetchResponseData();
+  }, []); 
+
+
+
+  // useEffect(() => {
+  //   const formId = urlParams.get("Fx");
+  //   const responseId = urlParams.get("Rx");
+  //   // console.log("slug details",formId)
+  //   if (responseId) {
+  //     setFormResponseId(responseId);
+  //     // console.log("response_id after check",responseId)
+  //     try {
+  //       fetch(`https://forms-api.makemyhouse.com/response/${responseId}`)
+  //         .then(response => {
+  //           if (!response.ok) {
+  //             throw new Error("Network response was not ok");
+  //           }
+  //           return response.text(); // Fetch response as text instead of JSON
+  //         })
+  //         .then(data => {
+  //           try {
+  //             const parsedData = JSON.parse(data); // Attempt to parse 
+  //             const dataObject = parsedData[0]?.answer[0];
+              
+  //             if (dataObject) {
+  //               let formattedData = "";
+  //               for (const key in dataObject) {
+  //                 if (dataObject.hasOwnProperty(key)) {
+  //                   const formattedKey = key.replace(/\s+/g, " ").trim();
+  //                   const formattedValue = JSON.stringify(dataObject[key]);
+  //                   formattedData += `question:${formattedKey}\n Answer:${formattedValue}\n`;
+  //                 }
+  //               }
+  //               console.log("form data:", formattedData);
+  //             } else {
+  //               console.log("Invalid data format or structure."); 
+  //             }
+  //           } catch (error) {
+  //             console.error("JSON parsing error:", error);
+  //           }
+  //         })
+  //         .catch(error => {
+  //           console.log("Fetch error:", error);
+  //         });
+  //     } catch (error) {
+  //       console.log("Error occurred:", error);
+  //     }
+      
+  //   }
+  // },[]);
 
   return (
     <div className="step-form-container">
